@@ -6,6 +6,7 @@
     "astro": "npx -w astro astro",
     "dev": "npm run astro -- dev --host 0.0.0.0",
     "build": "npm run astro -- build",
-    "preview": "npm run astro -- preview"
+    "preview": "npm run astro -- preview",
+    "firebase": "npx -y firebase-tools@latest"
   }
 }
