@@ -10,7 +10,8 @@
     "dev": "npm run astro -- dev --host 0.0.0.0",
     "build": "npm run astro -- build",
     "preview": "npm run astro -- preview",
-    "firebase": "npx -y firebase-tools@latest"
+    "firebase": "npx -y firebase-tools@latest",
+    "start": "npm run firebase -- emulators:start"
   },
   "allowScripts": {
     "esbuild": true
