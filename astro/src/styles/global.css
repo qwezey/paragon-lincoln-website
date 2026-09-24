@@ -78,6 +78,10 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.dark .logo-mark {
+  filter: brightness(0) invert(1);
+}
+
 ::selection {
   background-color: var(--color-brand-500);
   color: white;
