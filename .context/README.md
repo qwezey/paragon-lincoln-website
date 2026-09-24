@@ -49,5 +49,6 @@ Use these specific visual assets when constructing page layouts, hero sections, 
 | | `Networking-2.jpg` |
 | | `Servers-Setup-1.png` |
 
-## 4. Key Functional Features
-* **Department Blogs**: Provide a blog architecture capable of serving independent articles and updates for each core service area (Civil/Structural, Project Management, Inspection, Construction Management, IT).
+## 4. Key Functional Features & Architecture
+* **Static Department Blogs**: Provide a simple, developer-managed blog layout capable of serving static articles for each core service area (Civil/Structural, Project Management, Inspection, Construction Management, IT).
+* **No Dynamic CMS**: The blog will NOT use an admin panel or dynamic backend CMS. Articles will be manually added directly to the codebase (e.g., via static Markdown, JSON, or MDX content files) by the developer upon request.
