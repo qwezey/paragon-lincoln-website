@@ -8,5 +8,8 @@
     "build": "npm run astro -- build",
     "preview": "npm run astro -- preview",
     "firebase": "npx -y firebase-tools@latest"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
   }
 }
