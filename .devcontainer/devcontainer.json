@@ -8,7 +8,9 @@
 		"vscode": {
 			"extensions": [
 				"eamodio.gitlens",
-				"astro-build.astro-vscode"
+				"astro-build.astro-vscode",
+				"streetsidesoftware.code-spell-checker",
+				"GitHub.vscode-github-actions"
 			]
 		}
 	}
