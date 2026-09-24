@@ -1,7 +1,8 @@
 {
   "hosting": {
     "public": "astro/dist",
-    "cleanUrls": true
+    "cleanUrls": true,
+    "trailingSlash": false
   },
   "emulators": {
     "hosting": {
