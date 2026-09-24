@@ -7,8 +7,5 @@
   },
   "dependencies": {
     "astro": "^7.3.4"
-  },
-  "allowScripts": {
-    "esbuild": true
   }
 }
