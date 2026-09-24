@@ -1,0 +1,55 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { projectGroups } from "../../data/site.js";
+---
+
+<Layout
+  title="Projects | Paragon Lincoln Engineering"
+  description="Representative project experience in engineering design, construction inspection, project management, construction management, and information technology."
+>
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Projects"
+      title="Representative Project Experience"
+      description="PARAGON's experience includes engineering design, construction inspection, project management, construction management, site development, infrastructure, structural design, value engineering, and technology projects."
+    />
+
+    <div class="mt-16 space-y-16">
+      {
+        projectGroups.map((group, gi) => (
+          <div class="reveal">
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-start">
+              {group.image && (
+                <img
+                  src={`/images/${group.image}`}
+                  alt={group.title}
+                  class="h-48 w-full rounded-2xl object-cover shadow-md lg:h-auto lg:w-72 lg:shrink-0"
+                />
+              )}
+              <div class="flex-1">
+                <h2 class="text-2xl font-bold text-[var(--fg)]">
+                  {group.title}
+                </h2>
+                <div class="mt-6 grid gap-4 sm:grid-cols-2">
+                  {group.projects.map((project) => (
+                    <div class="rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-5 transition-colors hover:border-brand-500">
+                      <h3 class="font-semibold text-[var(--fg)]">
+                        {project.name}
+                      </h3>
+                      {project.description && (
+                        <p class="mt-2 text-sm text-[var(--fg-muted)]">
+                          {project.description}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

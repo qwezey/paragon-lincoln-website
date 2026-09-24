@@ -1,0 +1,60 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import { departments } from "../../../data/site.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: {
+      department: post.data.department,
+      slug: post.id.split("/").pop(),
+    },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const department = departments.find((d) => d.slug === post.data.department);
+---
+
+<Layout
+  title={`${post.data.title} | Paragon Lincoln Engineering`}
+  description={post.data.description}
+>
+  <article class="mx-auto max-w-3xl px-4 py-20 sm:px-6 lg:px-8">
+    <a
+      href={`/blog/${post.data.department}/`}
+      class="reveal text-sm font-semibold text-brand-500 hover:underline"
+      >&larr; {department?.title}</a
+    >
+
+    <h1
+      class="reveal mt-4 text-3xl font-bold tracking-tight text-[var(--fg)] sm:text-4xl"
+    >
+      {post.data.title}
+    </h1>
+    <div
+      class="reveal mt-4 flex items-center gap-3 text-sm text-[var(--fg-muted)]"
+    >
+      <span>{post.data.author}</span>
+      <span>&middot;</span>
+      <time
+        >{
+          post.data.publishDate.toLocaleDateString("en-US", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })
+        }</time
+      >
+    </div>
+
+    <div
+      class="reveal prose prose-neutral dark:prose-invert mt-10 max-w-none prose-headings:text-[var(--fg)] prose-p:text-[var(--fg-muted)] prose-li:text-[var(--fg-muted)] prose-a:text-brand-500"
+    >
+      <Content />
+    </div>
+  </article>
+</Layout>
