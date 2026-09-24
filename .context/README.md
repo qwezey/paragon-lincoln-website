@@ -1,16 +1,16 @@
 # Context & Source Material for AI Code Assistants
 
-This folder contains the master site hierarchy, copy, visual assets, and reference material for building the **Paragon Lincoln Engineering (PARAGON)** website[cite: 1, 2, 3].
+This folder contains the master site hierarchy, copy, visual assets, and reference material for building the **Paragon Lincoln Engineering (PARAGON)** website.
 
 ## 1. Master Copy & Content Source
-* **`documents/Final-Website-Paragon-V2.docx`**: The primary source of truth for all page text, section content, company information, contact numbers, and service descriptions[cite: 3].
-* **`documents/Structure-of-Website.docx`**: The master blueprint for site navigation and routing hierarchy[cite: 2].
-* **Note on Document Formatting**: The color scheme legends in the `.docx` header notes (e.g., "Red- Headers; Blue – Headings") are internal document formatting guides, NOT web design specifications[cite: 2, 3]. Web UI styling should follow modern engineering firm aesthetics unless explicit brand guidelines are provided.
+* **`documents/Final-Website-Paragon-V2.docx`**: The primary source of truth for all page text, section content, company information, contact numbers, and service descriptions.
+* **`documents/Structure-of-Website.docx`**: The master blueprint for site navigation and routing hierarchy.
+* **Note on Document Formatting**: The color scheme legends in the `.docx` header notes (e.g., "Red- Headers; Blue – Headings") are internal document formatting guides, NOT web design specifications. Web UI styling should follow modern engineering firm aesthetics unless explicit brand guidelines are provided.
 
 ## 2. Global Context
-* **Company Name**: Paragon Lincoln Engineering (PARAGON / PLE)[cite: 3]
-* **Target Geographies**: New York State (NYS), New York City (NYC), and New Jersey (NJ)[cite: 3]
-* **Core Disciplines**: Civil & Structural Engineering, Project Management, Construction Inspection, Construction Management, and Information Technology[cite: 3]
+* **Company Name**: Paragon Lincoln Engineering (PARAGON / PLE)
+* **Target Geographies**: New York State (NYS), New York City (NYC), and New Jersey (NJ)
+* **Core Disciplines**: Civil & Structural Engineering, Project Management, Construction Inspection, Construction Management, and Information Technology
 
 ## 3. Image & Logo Usage Guide (`branding-assets/`)
 
@@ -50,4 +50,4 @@ Use these specific visual assets when constructing page layouts, hero sections, 
 | | `Servers-Setup-1.png` |
 
 ## 4. Key Functional Features
-* **Department Blogs**: Provide a blog architecture capable of serving independent articles and updates for each core service area (Civil/Structural, Project Management, Inspection, Construction Management, IT)[cite: 2].
+* **Department Blogs**: Provide a blog architecture capable of serving independent articles and updates for each core service area (Civil/Structural, Project Management, Inspection, Construction Management, IT).
