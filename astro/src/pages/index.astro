@@ -2,7 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import ServiceCard from "../components/ServiceCard.astro";
+import { Image } from "astro:assets";
 import { company, services, sectors } from "../data/site.js";
+import { imageAssets } from "../data/image-assets.js";
 ---
 
 <Layout>
@@ -51,18 +53,18 @@ import { company, services, sectors } from "../data/site.js";
 				</div>
 			</div>
 			<div class="reveal is-visible grid grid-cols-2 gap-4">
-				<img
-					src="/images/Structural-Engineering-1.jpg"
+				<Image
+					src={imageAssets["Structural-Engineering-1.jpg"]}
 					alt="Structural engineering"
 					class="col-span-2 h-56 w-full rounded-2xl object-cover shadow-lg sm:h-64"
 				/>
-				<img
-					src="/images/Bridge-Design-1.png"
+				<Image
+					src={imageAssets["Bridge-Design-1.png"]}
 					alt="Bridge design"
 					class="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-48"
 				/>
-				<img
-					src="/images/AI-Integration-1.jpg"
+				<Image
+					src={imageAssets["AI-Integration-1.jpg"]}
 					alt="AI and technology integration"
 					class="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-48"
 				/>

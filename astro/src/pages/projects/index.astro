@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
+import { Image } from "astro:assets";
 import { projectGroups } from "../../data/site.js";
+import { imageAssets } from "../../data/image-assets.js";
 ---
 
 <Layout
@@ -21,8 +23,8 @@ import { projectGroups } from "../../data/site.js";
           <div class="reveal">
             <div class="flex flex-col gap-6 lg:flex-row lg:items-start">
               {group.image && (
-                <img
-                  src={`/images/${group.image}`}
+                <Image
+                  src={imageAssets[group.image]}
                   alt={group.title}
                   class="h-48 w-full rounded-2xl object-cover shadow-md lg:h-auto lg:w-72 lg:shrink-0"
                 />

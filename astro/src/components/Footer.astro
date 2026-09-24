@@ -1,5 +1,6 @@
 ---
 import { company, nav, services, pmContacts } from "../data/site.js";
+import { Image } from "astro:assets";
 import logo from "../assets/logos/Logo2ParagonLE.svg";
 
 const year = new Date().getFullYear();
@@ -10,11 +11,7 @@ const year = new Date().getFullYear();
     <div class="grid gap-10 md:grid-cols-4">
       <div class="md:col-span-1">
         <a href="/" class="flex items-center gap-3">
-          <img
-            src={logo.src}
-            alt={`${company.name} logo`}
-            class="h-11 w-auto"
-          />
+          <Image src={logo} alt={`${company.name} logo`} class="h-11 w-auto" />
         </a>
         <p class="mt-4 max-w-xs text-sm text-[var(--fg-muted)]">
           {company.tagline}
@@ -46,7 +43,8 @@ const year = new Date().getFullYear();
           <li>
             <a
               href="/contact/"
-              class="text-[var(--fg-muted)] hover:text-brand-500">Contact Us</a>
+              class="text-[var(--fg-muted)] hover:text-brand-500">Contact Us</a
+            >
           </li>
         </ul>
       </div>
@@ -83,7 +81,8 @@ const year = new Date().getFullYear();
           <li>
             Email: <a
               href={`mailto:${company.email}`}
-              class="hover:text-brand-500">{company.email}</a>
+              class="hover:text-brand-500">{company.email}</a
+            >
           </li>
           <li>Website: {company.website}</li>
           {

@@ -1,7 +1,9 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
+import { Image } from "astro:assets";
 import { services } from "../../data/site.js";
+import { imageAssets } from "../../data/image-assets.js";
 
 export function getStaticPaths() {
   return services.map((service) => ({
@@ -43,8 +45,8 @@ const otherServices = services.filter((s) => s.slug !== service.slug);
           Discuss This Service
         </a>
       </div>
-      <img
-        src={`/images/${service.image}`}
+      <Image
+        src={imageAssets[service.image]}
         alt={service.title}
         class="reveal is-visible aspect-[4/3] w-full rounded-2xl object-cover shadow-lg"
       />
@@ -100,8 +102,8 @@ const otherServices = services.filter((s) => s.slug !== service.slug);
               )}
             </div>
             {section.image && (
-              <img
-                src={`/images/${section.image}`}
+              <Image
+                src={imageAssets[section.image]}
                 alt={section.heading}
                 class="reveal aspect-[4/3] w-full rounded-2xl object-cover shadow-md"
               />

@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { company } from "../data/site.js";
+import { imageAssets } from "../data/image-assets.js";
 
 interface Props {
 	title?: string;
@@ -20,7 +21,7 @@ const {
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 const siteUrl = Astro.site?.href ?? new URL("/", Astro.url).href;
 const socialImage = new URL(
-	"/images/Structural-Engineering-1.jpg",
+	imageAssets["Structural-Engineering-1.jpg"].src,
 	canonicalUrl,
 ).href;
 const structuredData = {

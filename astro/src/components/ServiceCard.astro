@@ -8,6 +8,9 @@ interface Props {
   index?: number;
 }
 
+import { Image } from "astro:assets";
+import { imageAssets } from "../data/image-assets.js";
+
 const { slug, title, short, summary, image, index = 0 } = Astro.props;
 ---
 
@@ -17,8 +20,8 @@ const { slug, title, short, summary, image, index = 0 } = Astro.props;
   class="reveal group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
 >
   <div class="aspect-[16/10] overflow-hidden">
-    <img
-      src={`/images/${image}`}
+    <Image
+      src={imageAssets[image]}
       alt={title}
       loading="lazy"
       class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
