@@ -49,6 +49,9 @@ Use these specific visual assets when constructing page layouts, hero sections, 
 | | `Networking-2.jpg` |
 | | `Servers-Setup-1.png` |
 
-## 4. Key Functional Features & Architecture
+## 4. Key Functional Features & Frontend Requirements
 * **Static Department Blogs**: Provide a simple, developer-managed blog layout capable of serving static articles for each core service area (Civil/Structural, Project Management, Inspection, Construction Management, IT).
 * **No Dynamic CMS**: The blog will NOT use an admin panel or dynamic backend CMS. Articles will be manually added directly to the codebase (e.g., via static Markdown, JSON, or MDX content files) by the developer upon request.
+* **Responsive Design**: Mobile-first, fully adaptable UI that scales seamlessly across smartphones, tablets, laptops, and wide desktop displays.
+* **Light / Dark Mode**: Native support for light and dark themes with a user-accessible theme toggle.
+* **Smooth Animations**: Tasteful micro-interactions, subtle hover effects, and smooth scroll animations (e.g., Framer Motion / CSS transitions) fitting a premium, high-tech engineering firm.
