@@ -1,0 +1,210 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+import { Image } from "astro:assets";
+import { company, services, sectors } from "../data/site.js";
+import { imageAssets } from "../data/image-assets.js";
+---
+
+<Layout>
+	<!-- Hero -->
+	<section class="relative overflow-hidden bg-[var(--bg-elevated)]">
+		<div
+			class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_right,theme(colors.brand.500/15%),transparent_60%)]"
+		>
+		</div>
+		<div
+			class="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 md:py-28 lg:grid-cols-2 lg:px-8"
+		>
+			<div class="reveal is-visible flex min-w-0 flex-col justify-center">
+				<p
+					class="text-sm font-semibold uppercase tracking-widest text-brand-500"
+				>
+					{company.disciplines}
+				</p>
+				<h1
+					class="mt-4 text-4xl font-bold leading-tight tracking-tight text-[var(--fg)] sm:text-5xl lg:text-6xl"
+				>
+					Engineering Physical Infrastructure. <span class="text-brand-500"
+						>Architecting Digital Intelligence.</span
+					>
+				</h1>
+				<p class="mt-6 max-w-xl text-lg text-[var(--fg-muted)]">
+					Paragon Lincoln Engineering (PARAGON) is a full-service consulting
+					engineering and technology firm providing civil and structural
+					engineering, project management, construction inspection, construction
+					management, and information technology services throughout New York
+					State, New York City, and New Jersey.
+				</p>
+				<div class="mt-8 flex flex-wrap gap-4">
+					<a
+						href="/contact/"
+						class="rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-700 hover:shadow-lg"
+					>
+						Start Your Project
+					</a>
+					<a
+						href="/services/"
+						class="rounded-full border border-[var(--border)] px-6 py-3 text-sm font-semibold text-[var(--fg)] transition-colors hover:border-brand-500 hover:text-brand-500"
+					>
+						Explore Services
+					</a>
+				</div>
+			</div>
+			<div class="reveal is-visible grid grid-cols-2 gap-4">
+				<Image
+					src={imageAssets["Structural-Engineering-1.jpg"]}
+					alt="Structural engineering"
+					class="col-span-2 h-56 w-full rounded-2xl object-cover shadow-lg sm:h-64"
+				/>
+				<Image
+					src={imageAssets["Bridge-Design-1.png"]}
+					alt="Bridge design"
+					class="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-48"
+				/>
+				<Image
+					src={imageAssets["AI-Integration-1.jpg"]}
+					alt="AI and technology integration"
+					class="h-40 w-full rounded-2xl object-cover shadow-lg sm:h-48"
+				/>
+			</div>
+		</div>
+	</section>
+
+	<!-- Summary -->
+	<section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+		<SectionHeading
+			eyebrow="Summary"
+			title="Engineering Expertise. Construction Knowledge. Project Management. Technology."
+			description="When a project requires more than a conventional engineering consultant, PARAGON brings together engineering, construction, project management, inspection, and technology capabilities under one professional organization."
+		/>
+		<p class="reveal mt-6 max-w-3xl text-[var(--fg-muted)]">
+			Our licensed professional engineers and technical professionals provide
+			practical solutions for projects ranging from residential developments and
+			individual buildings to major commercial, industrial, transportation,
+			infrastructure, and public-sector projects. We work with owners,
+			developers, homebuilders, architects, contractors, public agencies,
+			testing agencies, and other project stakeholders to help move projects
+			from concept through completion.
+		</p>
+	</section>
+
+	<!-- Core Services -->
+	<section class="bg-[var(--bg-elevated)] py-20">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<SectionHeading
+				eyebrow="What We Do"
+				title="Our Core Services"
+				align="center"
+				class="mx-auto"
+			/>
+			<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{
+					services.map((service, index) => (
+						<ServiceCard
+							slug={service.slug}
+							title={service.title}
+							short={service.short}
+							summary={service.summary}
+							image={service.image}
+							index={index}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</section>
+
+	<!-- Why Paragon -->
+	<section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+		<SectionHeading
+			eyebrow="Why Paragon?"
+			title="One Firm. Multiple Capabilities."
+			align="center"
+			class="mx-auto"
+		/>
+		<div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+			{
+				[
+					{
+						title: "Licensed Engineering Expertise",
+						text: "Civil and structural engineering, site development, structural analysis, and infrastructure design.",
+					},
+					{
+						title: "Construction Knowledge",
+						text: "Field experience that identifies constructability issues and coordinates contractors and consultants.",
+					},
+					{
+						title: "Project Management",
+						text: "Integrated management of scope, cost, schedule, risk, contracts, and quality.",
+					},
+					{
+						title: "Technology & Innovation",
+						text: "Modern IT, data analytics, artificial intelligence, cloud computing, and digital workflows.",
+					},
+				].map((item, index) => (
+					<div
+						class="reveal rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6 transition-transform duration-300 hover:-translate-y-1"
+						style={`animation-delay:${index * 80}ms`}
+					>
+						<h3 class="font-semibold text-[var(--fg)]">{item.title}</h3>
+						<p class="mt-2 text-sm text-[var(--fg-muted)]">{item.text}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<!-- Sectors preview -->
+	<section class="bg-[var(--bg-elevated)] py-20">
+		<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+			<SectionHeading
+				eyebrow="Sectors We Serve"
+				title="Diverse Projects. Diverse Sectors."
+				align="center"
+				class="mx-auto"
+			/>
+			<div class="mt-12 flex flex-wrap justify-center gap-3">
+				{
+					sectors.map((sector) => (
+						<span class="reveal rounded-full border border-[var(--border)] px-5 py-2 text-sm font-medium text-[var(--fg-muted)] transition-colors hover:border-brand-500 hover:text-brand-500">
+							{sector.title}
+						</span>
+					))
+				}
+			</div>
+			<div class="mt-10 text-center">
+				<a
+					href="/sectors/"
+					class="text-sm font-semibold text-brand-500 hover:underline"
+					>View all sectors &rarr;</a
+				>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA -->
+	<section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+		<div
+			class="reveal relative overflow-hidden rounded-3xl bg-brand-700 px-8 py-16 text-center text-white sm:px-16"
+		>
+			<div
+				class="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.15),transparent_60%)]"
+			>
+			</div>
+			<h2 class="text-3xl font-bold sm:text-4xl">Let's Discuss Your Project</h2>
+			<p class="mx-auto mt-4 max-w-2xl text-brand-100">
+				Whether you need assistance planning a new development, designing a
+				building or site, managing construction, conducting inspections, or
+				addressing a technology need, PARAGON is ready to help.
+			</p>
+			<a
+				href="/contact/"
+				class="mt-8 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-brand-700 shadow-sm transition-all hover:shadow-lg"
+			>
+				Get in Touch
+			</a>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,100 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Toggle-based dark mode: apply the `dark` class to <html> */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-brand-50: #eef4ff;
+  --color-brand-100: #d9e6ff;
+  --color-brand-200: #b3ccff;
+  --color-brand-300: #82abfa;
+  --color-brand-400: #4f82e8;
+  --color-brand-500: #2c5fd0;
+  --color-brand-600: #1f47ab;
+  --color-brand-700: #1a3986;
+  --color-brand-800: #182f68;
+  --color-brand-900: #152953;
+  --color-brand-950: #0b1730;
+
+  --color-accent-400: #ff9a4d;
+  --color-accent-500: #f3791f;
+  --color-accent-600: #d95f0c;
+
+  --animate-fade-up: fade-up 0.7s ease both;
+  --animate-fade-in: fade-in 0.6s ease both;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  --bg: #f7f9fc;
+  --bg-elevated: #ffffff;
+  --fg: #101828;
+  --fg-muted: #475467;
+  --border: #e4e7ec;
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0f1a;
+  --bg-elevated: #121826;
+  --fg: #f2f4f8;
+  --fg-muted: #98a2b3;
+  --border: #1f2937;
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .logo-mark {
+  filter: brightness(0) invert(1);
+}
+
+::selection {
+  background-color: var(--color-brand-500);
+  color: white;
+}
+
+/* Utility for revealing elements as they scroll into view */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

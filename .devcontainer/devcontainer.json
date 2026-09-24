@@ -1,0 +1,17 @@
+{
+	"name": "Paragon Lincoln Website",
+	"image": "mcr.microsoft.com/devcontainers/base:resolute",
+	"features": {
+		"ghcr.io/devcontainers/features/node:2": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"eamodio.gitlens",
+				"astro-build.astro-vscode",
+				"streetsidesoftware.code-spell-checker",
+				"GitHub.vscode-github-actions"
+			]
+		}
+	}
+}

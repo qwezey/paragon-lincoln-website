@@ -1,0 +1,33 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import ServiceCard from "../../components/ServiceCard.astro";
+import { services } from "../../data/site.js";
+---
+
+<Layout
+  title="Services | Paragon Lincoln Engineering"
+  description="Civil & Structural Engineering, Project Management, Construction Inspection, Construction Management, and Information Technology services."
+>
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Services"
+      title="Integrated Disciplines. Coordinated Delivery."
+      description="PARAGON provides five core service lines, each backed by licensed professionals and modern technology, that can be delivered independently or as a coordinated, multidisciplinary team."
+    />
+    <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service, index) => (
+          <ServiceCard
+            slug={service.slug}
+            title={service.title}
+            short={service.short}
+            summary={service.summary}
+            image={service.image}
+            index={index}
+          />
+        ))
+      }
+    </div>
+  </section>
+</Layout>

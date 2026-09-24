@@ -1,0 +1,114 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import SectionHeading from "../../components/SectionHeading.astro";
+import { approach, advantage, techStack } from "../../data/site.js";
+---
+
+<Layout
+  title="Perspective | Paragon Lincoln Engineering"
+  description="Our Approach, the PARAGON Advantage, and Our Commitment to clients."
+>
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Perspective"
+      title="Approach | Advantage | Commitment"
+      align="center"
+      class="mx-auto"
+    />
+  </section>
+
+  <!-- Approach -->
+  <section id="approach" class="scroll-mt-24 bg-[var(--bg-elevated)] py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Our Approach"
+        title="Identify Challenges → Plan Solutions → Control Cost & Schedule → Manage Construction → Verify Quality → Complete the Project"
+        description="PARAGON believes that successful projects require more than technically correct designs: Communication. Collaboration. Accountability. Practical Solutions."
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          approach.map((item, index) => (
+            <div
+              class="reveal rounded-2xl border border-[var(--border)] bg-[var(--bg)] p-6 transition-transform duration-300 hover:-translate-y-1"
+              style={`animation-delay:${index * 80}ms`}
+            >
+              <h3 class="font-semibold text-[var(--fg)]">{item.title}</h3>
+              <p class="mt-2 text-sm text-[var(--fg-muted)]">{item.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Advantage -->
+  <section id="advantage" class="scroll-mt-24 py-16">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Paragon Advantage"
+        title="Engineering + Construction + Project Management + Technology"
+        description="Paragon L Engineering combines four complementary capabilities into one coordinated organization."
+      />
+      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          advantage.map((item, index) => (
+            <div
+              class="reveal rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6 text-center transition-transform duration-300 hover:-translate-y-1"
+              style={`animation-delay:${index * 80}ms`}
+            >
+              <h3 class="font-semibold text-brand-500">{item.title}</h3>
+              <p class="mt-2 text-sm text-[var(--fg-muted)]">{item.text}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <div
+        class="reveal mt-12 rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6"
+      >
+        <h3 class="text-lg font-semibold text-[var(--fg)]">Technology Stack</h3>
+        <dl class="mt-4 grid gap-4 sm:grid-cols-2">
+          {
+            techStack.map((t) => (
+              <div>
+                <dt class="text-xs font-semibold uppercase tracking-wide text-[var(--fg-muted)]">
+                  {t.label}
+                </dt>
+                <dd class="mt-1 text-sm text-[var(--fg)]">{t.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- Commitment -->
+  <section id="commitment" class="scroll-mt-24 bg-[var(--bg-elevated)] py-16">
+    <div class="mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+      <SectionHeading
+        eyebrow="Our Commitment"
+        title="Deliver Practical Solutions. Protect Quality. Control Cost."
+        align="center"
+        class="mx-auto"
+      />
+      <p class="reveal mt-6 text-[var(--fg-muted)]">
+        At Paragon L Engineering, our mission is to provide high-quality,
+        client-focused engineering, construction, project-management,
+        inspection, and technology solutions. We strive to bridge technical
+        complexity with practical business and project objectives.
+      </p>
+      <p class="reveal mt-4 text-[var(--fg-muted)]">
+        Every project is different. Our responsibility is to understand the
+        client's needs, identify the challenges, develop practical solutions,
+        communicate clearly, and provide dependable professional service.
+      </p>
+      <a
+        href="/contact/"
+        class="reveal mt-8 inline-flex rounded-full bg-brand-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:bg-brand-700 hover:shadow-lg"
+      >
+        Start a Conversation
+      </a>
+    </div>
+  </section>
+</Layout>

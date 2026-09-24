@@ -1,0 +1,77 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import SectionHeading from "../../../components/SectionHeading.astro";
+import { getCollection } from "astro:content";
+import { departments } from "../../../data/site.js";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return departments.map((dept) => ({
+    params: { department: dept.slug },
+    props: {
+      department: dept,
+      posts: posts
+        .filter((p) => p.data.department === dept.slug)
+        .sort(
+          (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf(),
+        ),
+    },
+  }));
+}
+
+const { department, posts } = Astro.props;
+---
+
+<Layout
+  title={`${department.title} Blog | Paragon Lincoln Engineering`}
+  description={`Articles and updates from PARAGON's ${department.title} team.`}
+>
+  <section class="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <SectionHeading
+      eyebrow="Department Blog"
+      title={department.title}
+      description={`Articles and updates from the ${department.title} practice.`}
+    />
+
+    <div class="mt-8">
+      <a
+        href="/blog/"
+        class="text-sm font-semibold text-brand-500 hover:underline"
+        >&larr; All departments</a
+      >
+    </div>
+
+    {
+      posts.length === 0 ? (
+        <p class="reveal mt-10 text-[var(--fg-muted)]">
+          No articles have been published for this department yet. Check back
+          soon.
+        </p>
+      ) : (
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post, index) => (
+            <a
+              href={`/blog/${department.slug}/${post.id.split("/").pop()}/`}
+              class="reveal flex flex-col rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              style={`animation-delay:${index * 80}ms`}
+            >
+              <h2 class="text-lg font-semibold text-[var(--fg)]">
+                {post.data.title}
+              </h2>
+              <p class="mt-2 flex-1 text-sm text-[var(--fg-muted)]">
+                {post.data.description}
+              </p>
+              <time class="mt-4 text-xs text-[var(--fg-muted)]">
+                {post.data.publishDate.toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </time>
+            </a>
+          ))}
+        </div>
+      )
+    }
+  </section>
+</Layout>

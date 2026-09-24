@@ -1,0 +1,113 @@
+---
+import { company, nav, services, pmContacts } from "../data/site.js";
+import { Image } from "astro:assets";
+import logo from "../assets/logos/logo-no-background.svg";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-[var(--border)] bg-[var(--bg-elevated)]">
+  <div class="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-4">
+      <div class="md:col-span-1">
+        <a href="/" class="flex items-center gap-3">
+          <Image
+            src={logo}
+            alt={`${company.name} logo`}
+            class="logo-mark h-11 w-auto"
+          />
+        </a>
+        <p class="mt-4 max-w-xs text-sm text-[var(--fg-muted)]">
+          {company.tagline}
+        </p>
+        <p class="mt-4 text-sm text-[var(--fg-muted)]">
+          Office Locations: {company.locations}
+        </p>
+      </div>
+
+      <div>
+        <h3
+          class="text-sm font-semibold uppercase tracking-wider text-[var(--fg)]"
+        >
+          Navigate
+        </h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          {
+            nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-[var(--fg-muted)] hover:text-brand-500"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="/contact/"
+              class="text-[var(--fg-muted)] hover:text-brand-500">Contact Us</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <h3
+          class="text-sm font-semibold uppercase tracking-wider text-[var(--fg)]"
+        >
+          Services
+        </h3>
+        <ul class="mt-4 space-y-2 text-sm">
+          {
+            services.map((service) => (
+              <li>
+                <a
+                  href={`/services/${service.slug}/`}
+                  class="text-[var(--fg-muted)] hover:text-brand-500"
+                >
+                  {service.title.replace(" Services", "")}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3
+          class="text-sm font-semibold uppercase tracking-wider text-[var(--fg)]"
+        >
+          Contact
+        </h3>
+        <ul class="mt-4 space-y-3 text-sm text-[var(--fg-muted)]">
+          <li>
+            Email: <a
+              href={`mailto:${company.email}`}
+              class="hover:text-brand-500">{company.email}</a
+            >
+          </li>
+          <li>Website: {company.website}</li>
+          {
+            pmContacts.map((c) => (
+              <li>
+                <span class="block text-xs text-[var(--fg-muted)]">
+                  {c.department}
+                </span>
+                <span class="font-medium text-[var(--fg)]">{c.phone}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[var(--border)] pt-6 text-xs text-[var(--fg-muted)] sm:flex-row"
+    >
+      <p>&copy; {year} {company.name}. All rights reserved.</p>
+      <p>Certified MBE | WBE | SBE</p>
+    </div>
+  </div>
+</footer>
