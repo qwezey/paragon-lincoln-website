@@ -7,12 +7,45 @@ import { company } from "../data/site.js";
 interface Props {
 	title?: string;
 	description?: string;
+	type?: "website" | "article";
+	schema?: Record<string, unknown>;
 }
 
 const {
 	title = `${company.name} | Engineering, Construction & Technology`,
 	description = company.tagline,
+	type = "website",
+	schema,
 } = Astro.props;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const siteUrl = Astro.site?.href ?? new URL("/", Astro.url).href;
+const socialImage = new URL(
+	"/images/Structural-Engineering-1.jpg",
+	canonicalUrl,
+).href;
+const structuredData = {
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": `${siteUrl}#organization`,
+			name: company.name,
+			url: siteUrl,
+			logo: `${siteUrl}favicon.svg`,
+			email: company.email,
+			areaServed: ["New York State", "New York City", "New Jersey"],
+		},
+		{
+			"@type": "WebSite",
+			"@id": `${siteUrl}#website`,
+			url: siteUrl,
+			name: company.name,
+			description: company.tagline,
+			publisher: { "@id": `${siteUrl}#organization` },
+		},
+		...(schema ? [schema] : []),
+	],
+};
 ---
 
 <!doctype html>
@@ -21,8 +54,27 @@ const {
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="canonical" href={canonicalUrl.href} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<meta property="og:type" content={type} />
+		<meta property="og:site_name" content={company.name} />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalUrl.href} />
+		<meta property="og:image" content={socialImage} />
+		<meta
+			property="og:image:alt"
+			content={`${company.name} engineering services`}
+		/>
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={socialImage} />
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(structuredData)}
+		/>
 		<title>{title}</title>
 		<script is:inline>
 			/* Set theme before paint to avoid a flash of the wrong theme. */
