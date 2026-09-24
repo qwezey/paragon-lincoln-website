@@ -1,0 +1,15 @@
+{
+  "hosting": {
+    "public": "astro/dist",
+    "cleanUrls": true
+  },
+  "emulators": {
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true
+    },
+    "singleProjectMode": true
+  }
+}
