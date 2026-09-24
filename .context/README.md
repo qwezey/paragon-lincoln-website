@@ -50,6 +50,9 @@ Use these specific visual assets when constructing page layouts, hero sections, 
 | | `Servers-Setup-1.png` |
 
 ## 4. Key Functional Features & Frontend Requirements
+* **Framework & Location**: Built with Astro inside the `./astro/` directory.
+* **Rendering Strategy**: Pure Static Site Generation (`output: 'static'`). All pages and blog posts are pre-rendered at build time. No SSR or dynamic backend server adapters.
+* **Deployment**: Configured for static **Firebase Hosting** targeting the static output directory (`./astro/dist`).
 * **Static Department Blogs**: Provide a simple, developer-managed blog layout capable of serving static articles for each core service area (Civil/Structural, Project Management, Inspection, Construction Management, IT).
 * **No Dynamic CMS**: The blog will NOT use an admin panel or dynamic backend CMS. Articles will be manually added directly to the codebase (e.g., via static Markdown, JSON, or MDX content files) by the developer upon request.
 * **Responsive Design**: Mobile-first, fully adaptable UI that scales seamlessly across smartphones, tablets, laptops, and wide desktop displays.

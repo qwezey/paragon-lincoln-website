@@ -7,6 +7,12 @@ Key instructions:
 - Use vector asset `.context/branding-assets/logos/Logo2ParagonLE.svg` for header/footer branding.
 - Implement the department blog using a static code-based structure (Markdown/JSON/MDX) without any CMS backend.
 
+Project Setup & Scope:
+- **Framework**: Astro project located inside the `./astro` directory.
+- **Rendering Mode**: 100% Static Site Generation (SSG). Set `output: 'static'` in `astro.config.mjs`. Do NOT use dynamic server adapters or SSR features.
+- **Deployment Target**: Firebase Hosting (Static).
+- **Directory Scope**: Execute build commands and write UI component files within the `./astro` directory.
+
 Design & UI Guidelines:
 - **Responsive Design**: Ensure all layouts are mobile-first and look clean on mobile, tablet, desktop, and ultra-wide screens.
 - **Theme Support**: Implement full Light and Dark mode toggle functionality using clean CSS variables or Tailwind `dark:` classes.
