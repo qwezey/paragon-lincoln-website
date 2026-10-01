@@ -18,14 +18,16 @@ import { services } from "../../data/site.js";
     <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         services.map((service, index) => (
-          <ServiceCard
-            slug={service.slug}
-            title={service.title}
-            short={service.short}
-            summary={service.summary}
-            image={service.image}
-            index={index}
-          />
+          <div id={service.slug} class="scroll-mt-24">
+            <ServiceCard
+              slug={service.slug}
+              title={service.title}
+              short={service.short}
+              summary={service.summary}
+              image={service.image}
+              index={index}
+            />
+          </div>
         ))
       }
     </div>

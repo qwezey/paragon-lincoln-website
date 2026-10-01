@@ -1,7 +1,7 @@
 ---
 import ThemeToggle from "./ThemeToggle.astro";
 import { Image } from "astro:assets";
-import { company, nav, contactCta } from "../data/site.js";
+import { company, nav, contactCta, navSections } from "../data/site.js";
 import logo from "../assets/logos/logo-no-background.svg";
 
 const path = Astro.url.pathname;
@@ -25,17 +25,50 @@ const isActive = (href) =>
 
     <nav class="hidden items-center gap-1 lg:flex">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-              "rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-brand-500",
-              isActive(item.href) ? "text-brand-500" : "text-[var(--fg-muted)]",
-            ]}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((item) => {
+          const sections = navSections[item.href];
+          return (
+            <div class="group relative">
+              <a
+                href={item.href}
+                class:list={[
+                  "flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-brand-500",
+                  isActive(item.href)
+                    ? "text-brand-500"
+                    : "text-[var(--fg-muted)]",
+                ]}
+              >
+                {item.label}
+                {sections && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="h-3.5 w-3.5 transition-transform duration-150 group-hover:rotate-180"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                )}
+              </a>
+              {sections && (
+                <div class="invisible absolute left-1/2 top-full z-20 w-72 -translate-x-1/2 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] p-2 opacity-0 shadow-lg transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  {sections.map((sec) => (
+                    <a
+                      href={sec.href}
+                      class="block rounded-lg px-3 py-2 text-sm text-[var(--fg-muted)] hover:bg-brand-500/10 hover:text-brand-500"
+                    >
+                      {sec.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })
       }
     </nav>
 
@@ -74,14 +107,54 @@ const isActive = (href) =>
     class="hidden flex-col gap-1 border-t border-[var(--border)] px-4 py-3 lg:hidden"
   >
     {
-      nav.map((item) => (
-        <a
-          href={item.href}
-          class="rounded-lg px-3 py-2 text-sm font-medium text-[var(--fg-muted)] hover:bg-brand-500/10 hover:text-brand-500"
-        >
-          {item.label}
-        </a>
-      ))
+      nav.map((item) => {
+        const sections = navSections[item.href];
+        return (
+          <div class="mobile-nav-item">
+            <div class="flex items-center">
+              <a
+                href={item.href}
+                class="flex-1 rounded-lg px-3 py-2 text-sm font-medium text-[var(--fg-muted)] hover:bg-brand-500/10 hover:text-brand-500"
+              >
+                {item.label}
+              </a>
+              {sections && (
+                <button
+                  type="button"
+                  class="mobile-subnav-toggle rounded-lg p-2 text-[var(--fg-muted)]"
+                  aria-expanded="false"
+                  aria-label={`Toggle ${item.label} sections`}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="mobile-subnav-chevron h-4 w-4 transition-transform duration-150"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+              )}
+            </div>
+            {sections && (
+              <div class="mobile-subnav hidden flex-col gap-1 pl-4">
+                {sections.map((sec) => (
+                  <a
+                    href={sec.href}
+                    class="rounded-lg px-3 py-2 text-xs font-medium text-[var(--fg-muted)] hover:bg-brand-500/10 hover:text-brand-500"
+                  >
+                    {sec.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+        );
+      })
     }
     <a
       href={contactCta.href}
@@ -101,6 +174,20 @@ const isActive = (href) =>
       menu?.classList.toggle("hidden", !isHidden ? true : false);
       menu?.classList.toggle("flex", isHidden);
       btn.setAttribute("aria-expanded", String(isHidden));
+    });
+
+    document.querySelectorAll(".mobile-subnav-toggle").forEach((toggle) => {
+      toggle.addEventListener("click", () => {
+        const panel = toggle
+          .closest(".mobile-nav-item")
+          ?.querySelector(".mobile-subnav");
+        const chevron = toggle.querySelector(".mobile-subnav-chevron");
+        const isHidden = panel?.classList.contains("hidden");
+        panel?.classList.toggle("hidden", !isHidden ? true : false);
+        panel?.classList.toggle("flex", isHidden);
+        chevron?.classList.toggle("rotate-180", isHidden);
+        toggle.setAttribute("aria-expanded", String(isHidden));
+      });
     });
   })();
 </script>

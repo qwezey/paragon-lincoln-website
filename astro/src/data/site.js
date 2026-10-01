@@ -24,6 +24,13 @@ export const nav = [
 
 export const contactCta = { label: 'Contact Us', href: '/contact/' };
 
+/** Convert a heading/title into a URL-safe anchor id. */
+export const slugify = (str) =>
+  str
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+
 /** Core service lines shown on the homepage and services hub. */
 export const services = [
   {
@@ -585,3 +592,40 @@ export const pmContacts = [
   { department: 'Homebuilder & Developer Construction Management', text: '732-429-6636', phone: '732-515-5599' },
   { department: 'Information Technology Services', text: '732-586-6367', phone: '732-515-5599' },
 ];
+
+/** Sub-navigation sections shown under each top-level nav item, mapped to
+ * anchor ids on that item's page (or, for Blog, to each department page). */
+export const navSections = {
+  '/': [
+    { label: 'Summary', href: '/#summary' },
+    { label: 'Core Services', href: '/#core-services' },
+    { label: 'Why Paragon?', href: '/#why-paragon' },
+    { label: 'Sectors We Serve', href: '/#sectors-preview' },
+  ],
+  '/services/': services.map((service) => ({
+    label: service.short,
+    href: `/services/#${service.slug}`,
+  })),
+  '/sectors/': sectors.map((sector) => ({
+    label: sector.title,
+    href: `/sectors/#${slugify(sector.title)}`,
+  })),
+  '/projects/': projectGroups.map((group) => ({
+    label: group.title,
+    href: `/projects/#${slugify(group.title)}`,
+  })),
+  '/perspective/': [
+    { label: 'Our Approach', href: '/perspective/#approach' },
+    { label: 'Paragon Advantage', href: '/perspective/#advantage' },
+    { label: 'Our Commitment', href: '/perspective/#commitment' },
+  ],
+  '/about/': [
+    { label: 'Who We Are', href: '/about/#who-we-are' },
+    { label: 'Why Paragon?', href: '/about/#why-paragon' },
+    { label: 'Certifications', href: '/about/#certifications' },
+  ],
+  '/blog/': departments.map((dept) => ({
+    label: dept.title,
+    href: `/blog/${dept.slug}/`,
+  })),
+};

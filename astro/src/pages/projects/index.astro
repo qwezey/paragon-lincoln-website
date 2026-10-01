@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import SectionHeading from "../../components/SectionHeading.astro";
 import { Image } from "astro:assets";
-import { projectGroups } from "../../data/site.js";
+import { projectGroups, slugify } from "../../data/site.js";
 import { imageAssets } from "../../data/image-assets.js";
 ---
 
@@ -20,7 +20,7 @@ import { imageAssets } from "../../data/image-assets.js";
     <div class="mt-16 space-y-16">
       {
         projectGroups.map((group, gi) => (
-          <div class="reveal">
+          <div id={slugify(group.title)} class="reveal scroll-mt-24">
             <div class="flex flex-col gap-6 lg:flex-row lg:items-start">
               {group.image && (
                 <Image
