@@ -2,7 +2,6 @@
 interface Props {
   slug: string;
   title: string;
-  short: string;
   summary: string;
   image: string;
   index?: number;
@@ -11,7 +10,7 @@ interface Props {
 import { Image } from "astro:assets";
 import { imageAssets } from "../data/image-assets.js";
 
-const { slug, title, short, summary, image, index = 0 } = Astro.props;
+const { slug, title, summary, image, index = 0 } = Astro.props;
 ---
 
 <a
@@ -31,7 +30,7 @@ const { slug, title, short, summary, image, index = 0 } = Astro.props;
     <h3
       class="text-lg font-semibold text-[var(--fg)] group-hover:text-brand-500"
     >
-      {short}
+      {title}
     </h3>
     <p class="mt-2 flex-1 text-sm text-[var(--fg-muted)]">{summary}</p>
     <span

@@ -603,7 +603,7 @@ export const navSections = {
     { label: 'Sectors We Serve', href: '/#sectors-preview' },
   ],
   '/services/': services.map((service) => ({
-    label: service.short,
+    label: service.title,
     href: `/services/#${service.slug}`,
   })),
   '/sectors/': sectors.map((sector) => ({
