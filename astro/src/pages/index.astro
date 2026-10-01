@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import SectionHeading from "../components/SectionHeading.astro";
 import ServiceCard from "../components/ServiceCard.astro";
 import { Image } from "astro:assets";
-import { company, services, sectors } from "../data/site.js";
+import { company, services, sectors, slugify } from "../data/site.js";
 import { imageAssets } from "../data/image-assets.js";
 ---
 
@@ -179,9 +179,12 @@ import { imageAssets } from "../data/image-assets.js";
 			<div class="mt-12 flex flex-wrap justify-center gap-3">
 				{
 					sectors.map((sector) => (
-						<span class="reveal rounded-full border border-[var(--border)] px-5 py-2 text-sm font-medium text-[var(--fg-muted)] transition-colors hover:border-brand-500 hover:text-brand-500">
+						<a
+							href={`/sectors/#${slugify(sector.title)}`}
+							class="reveal rounded-full border border-[var(--border)] px-5 py-2 text-sm font-medium text-[var(--fg-muted)] transition-colors hover:border-brand-500 hover:text-brand-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-500"
+						>
 							{sector.title}
-						</span>
+						</a>
 					))
 				}
 			</div>
