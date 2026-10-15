@@ -506,6 +506,12 @@ export const projectGroups = [
         description:
           'Managed and inspected construction projects with average annual consulting budgets of approximately $2.5 million and construction values ranging from $10 million to $50 million, for the NYC School Construction Authority (SCA), Port Authority of New York and New Jersey (PANYNJ), NYSDOT, NYC DDC, and MTA.',
       },
+    ],
+  },
+  {
+    title: 'Construction Management and Inspection',
+    image: 'Construction-Management-1.png',
+    projects: [
       {
         name: 'Construction Management and Inspection — PANYNJ',
         description: 'Multi-year construction management and inspection programs for bridges, tunnels, airports, and associated roadways; retaining-wall inspections at 10 New York City parks.',
