@@ -28,8 +28,23 @@ const serviceOptions = [
       <!-- Form -->
       <form
         id="service-request-form"
+        action="https://formsubmit.co/info@paragonln.com"
+        method="POST"
         class="reveal lg:col-span-3 space-y-6 rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-6 sm:p-8"
       >
+        <input
+          type="hidden"
+          name="_subject"
+          value="Online Service Request - Paragon Lincoln Engineering"
+        />
+        <input type="hidden" name="_template" value="table" />
+        <input
+          type="text"
+          name="_honey"
+          class="hidden"
+          tabindex="-1"
+          autocomplete="off"
+        />
         <h2 class="text-lg font-semibold text-[var(--fg)]">
           Online Service Request Form
         </h2>
@@ -153,7 +168,8 @@ const serviceOptions = [
           <p class="mt-1 text-sm text-[var(--fg-muted)]">
             Email: <a
               href={`mailto:${company.email}`}
-              class="text-brand-500 hover:underline">{company.email}</a>
+              class="text-brand-500 hover:underline">{company.email}</a
+            >
           </p>
         </div>
 
@@ -182,31 +198,3 @@ const serviceOptions = [
     </div>
   </section>
 </Layout>
-
-<script is:inline>
-  /* Static-site friendly submission: composes a pre-filled email since there is no backend/CMS. */
-  const form = document.getElementById("service-request-form");
-  const status = document.getElementById("form-status");
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const data = new FormData(form);
-    const services = data.getAll("services").join(", ") || "Not specified";
-    const lines = [
-      `Name: ${data.get("name")}`,
-      `Company / Organization: ${data.get("company")}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone")}`,
-      `Project Location: ${data.get("location")}`,
-      `Project Owner / Client: ${data.get("owner")}`,
-      `Service(s) Requested: ${services}`,
-      `Description: ${data.get("description") || ""}`,
-    ];
-    const subject = encodeURIComponent(
-      "Online Service Request — Paragon Lincoln Engineering",
-    );
-    const body = encodeURIComponent(lines.join("\n"));
-    window.location.href = `mailto:info@paragonln.com?subject=${subject}&body=${body}`;
-    if (status)
-      status.textContent = "Opening your email client to send this request…";
-  });
-</script>
