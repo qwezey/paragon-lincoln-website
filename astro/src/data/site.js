@@ -39,7 +39,7 @@ export const services = [
     short: 'Civil & Structural Engineering',
     summary:
       'Civil and structural engineering, site development, structural analysis and design, infrastructure design, existing-structure evaluation, foundations, drainage, utilities, and related technical consulting.',
-    image: 'Structural-Engineering-1.jpg',
+    image: 'Engineering-Designs-1.jpg',
     contactText: '732-939-7999',
     contactPhone: '732-902-7841',
     sections: [
@@ -78,7 +78,7 @@ export const services = [
       },
       {
         heading: 'Structural Engineering',
-        image: 'Bridge-Design-1.png',
+        image: 'Structural-Engineering-1.jpg',
         paragraphs: [
           'PARAGON provides structural analysis, design, evaluation, rehabilitation, and construction support for new and existing facilities.',
         ],
@@ -96,6 +96,7 @@ export const services = [
       },
       {
         heading: 'Integrated Engineering Services',
+        image: 'Bridge-Design-1.png',
         paragraphs: [
           'Many projects require more than one engineering discipline. PARAGON can coordinate with qualified professional firms and strategic partners to support multidisciplinary projects involving architecture, mechanical, electrical, plumbing, traffic, geotechnical, and environmental disciplines.',
         ],
@@ -226,6 +227,7 @@ export const services = [
       },
       {
         heading: 'An Important Advantage for Developers & Homebuilders',
+        image: 'Construction-Safety-OHSA-Compliance-1.jpg',
         paragraphs: [
           'Systematic construction documentation can provide an additional quality-assurance and transparency tool — demonstrating that critical stages of construction were observed and documented before components became concealed.',
         ],
@@ -335,7 +337,7 @@ export const services = [
       },
       {
         heading: 'Network Solutions',
-        image: 'Networking-2.jpg',
+        image: 'Internet-Security-1.jpg',
         paragraphs: [
           'Backup & disaster recovery, remote IT support, VoIP & business communications, email & collaboration, and hardware installation & maintenance round out our managed technology capabilities.',
         ],
@@ -497,7 +499,7 @@ export const projectGroups = [
   },
   {
     title: 'Project Management & Inspection',
-    image: 'Construction-Project-Management-2.jpg',
+    image: 'Construction-Safety-OHSA-Compliance-1.jpg',
     projects: [
       {
         name: 'Public-Sector Program Management',
@@ -520,7 +522,7 @@ export const projectGroups = [
   },
   {
     title: 'Information Technology Projects',
-    image: 'AI-Integration-1.jpg',
+    image: 'Networking-2.jpg',
     projects: [
       {
         name: 'AI 99meditations App',
